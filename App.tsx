@@ -198,13 +198,13 @@ const App: React.FC = () => {
 
     const saved = getAnalysis(bookId);
     if (saved) {
+      // Nếu đã có phân tích, chuyển thẳng sang chế độ xem
       setSelectedBook(book);
       setAnalysis(saved);
       setStatus(AnalysisStatus.SUCCESS);
     } else {
-      if (window.confirm(`Tác phẩm "${book.titleVi}" chưa được phân tích. Bắt đầu phân tích ngay?`)) {
-        handleAnalyze(book);
-      }
+      // Nếu chưa có, tự động bắt đầu phân tích (chuyển sang màn hình Loading của App)
+      handleAnalyze(book);
     }
   };
 
